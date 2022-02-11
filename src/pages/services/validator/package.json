@@ -1,0 +1,6 @@
+{
+  "name": "Validator",
+  "version": "0.0.0",
+  "main": "Validator.js",
+  "private": true
+}

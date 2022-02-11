@@ -10,6 +10,7 @@ import {
   LibraryBooks as LibraryIcon,
   HelpOutline as FAQIcon,
   ArrowBack as ArrowBackIcon,
+  Brightness5,
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -32,11 +33,23 @@ import {
 const structure = [
   { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
   {
+    id: 15,
+    label: "Service",
+    link: "/app/services",
+    icon: <Brightness5 />,
+    children: [
+      { label: "Service provider", link: "/app/services/provider" },
+      { label: "Service buyer", link: "/app/services/buyer" },
+      { label: "Validator", link: "/app/services/validator" },
+    ],
+  },
+  {
     id: 1,
     label: "Typography",
     link: "/app/typography",
     icon: <TypographyIcon />,
   },
+ 
   { id: 2, label: "Tables", link: "/app/tables", icon: <TableIcon /> },
   {
     id: 3,
@@ -80,6 +93,7 @@ const structure = [
     link: "",
     icon: <Dot size="small" color="secondary" />,
   },
+  
 ];
 
 function Sidebar({ location }) {

@@ -1,0 +1,6 @@
+{
+  "name": "Buyer",
+  "version": "0.0.0",
+  "main": "Buyer.js",
+  "private": true
+}

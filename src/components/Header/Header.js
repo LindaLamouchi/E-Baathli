@@ -6,8 +6,7 @@ import {
   InputBase,
   Menu,
   MenuItem,
-  Fab,
-  Link
+  Fab
 } from "@material-ui/core";
 import {
   Menu as MenuIcon,
@@ -24,7 +23,7 @@ import classNames from "classnames";
 import useStyles from "./styles";
 
 // components
-import { Badge, Typography, Button } from "../Wrappers";
+import { Badge, Typography } from "../Wrappers";
 import Notification from "../Notification/Notification";
 import UserAvatar from "../UserAvatar/UserAvatar";
 
@@ -35,6 +34,7 @@ import {
   toggleSidebar,
 } from "../../context/LayoutContext";
 import { useUserDispatch, signOut } from "../../context/UserContext";
+import Profile from "../../pages/profile/Profile";
 
 const messages = [
   {
@@ -68,7 +68,7 @@ const messages = [
 ];
 
 const notifications = [
-  { id: 0, color: "warning", message: "Check out this awesome ticket" },
+  { id: 0, color: "warning", message: "Check out this awesome update" },
   {
     id: 1,
     color: "success",
@@ -79,7 +79,7 @@ const notifications = [
     id: 2,
     color: "secondary",
     type: "notification",
-    message: "This is just a simple notification",
+    message: "A new request ...",
   },
   {
     id: 3,
@@ -106,8 +106,11 @@ export default function Header(props) {
   var [isSearchOpen, setSearchOpen] = useState(false);
 
   return (
+  
     <AppBar position="fixed" className={classes.appBar}>
+       
       <Toolbar className={classes.toolbar}>
+   
         <IconButton
           color="inherit"
           onClick={() => toggleSidebar(layoutDispatch)}
@@ -137,10 +140,9 @@ export default function Header(props) {
           )}
         </IconButton>
         <Typography variant="h6" weight="medium" className={classes.logotype}>
-          React Material Admin
+          E-Baathli
         </Typography>
         <div className={classes.grow} />
-        <Button component={Link} href="https://flatlogic.com/templates/react-material-admin-full" variant={"outlined"} color={"secondary"} className={classes.purchaseBtn}>Unlock full version</Button>
         <div
           className={classNames(classes.search, {
             [classes.searchFocused]: isSearchOpen,
@@ -205,6 +207,7 @@ export default function Header(props) {
         >
           <AccountIcon classes={{ root: classes.headerIcon }} />
         </IconButton>
+        
         <Menu
           id="mail-menu"
           open={Boolean(mailMenu)}
@@ -260,6 +263,7 @@ export default function Header(props) {
             <SendIcon className={classes.sendButtonIcon} />
           </Fab>
         </Menu>
+      
         <Menu
           id="notifications-menu"
           open={Boolean(notificationsMenu)}
@@ -285,11 +289,11 @@ export default function Header(props) {
           onClose={() => setProfileMenu(null)}
           className={classes.headerMenu}
           classes={{ paper: classes.profileMenu }}
-          disableAutoFocusItem
+          
         >
           <div className={classes.profileMenuUser}>
             <Typography variant="h4" weight="medium">
-              John Smith
+              Linda Lamouchi
             </Typography>
             <Typography
               className={classes.profileMenuLink}
@@ -297,7 +301,7 @@ export default function Header(props) {
               color="primary"
               href="https://flatlogic.com"
             >
-              Flalogic.com
+              E-Baathli.com
             </Typography>
           </div>
           <MenuItem
@@ -305,8 +309,12 @@ export default function Header(props) {
               classes.profileMenuItem,
               classes.headerMenuItem,
             )}
-          >
-            <AccountIcon className={classes.profileMenuIcon} /> Profile
+            component={Profile}
+            href="/app/profile">
+           <AccountIcon className={classes.profileMenuIcon}  />
+             
+             Profile
+           
           </MenuItem>
           <MenuItem
             className={classNames(
@@ -334,7 +342,10 @@ export default function Header(props) {
             </Typography>
           </div>
         </Menu>
+     
       </Toolbar>
+      
+   
     </AppBar>
   );
 }
